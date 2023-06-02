@@ -1,28 +1,25 @@
+const buttons = document.querySelectorAll("button");
+const display = document.querySelector(".display");
+const specialChars = ["=", "*", "/", "-", "+"];
+let output = "";
 
-function add(a, b){
-    return a + b;
-}
-function substract(a,b){
-    return a - b;
-}
-function multiply(a,b){
-    return a * b;
-}
-function divide(a,b){
-    return a / b;
+const calculate = btnValue => {
+    if(btnValue === "=" && btnValue !== ""){
+        output = eval(output.replace("%", "/100"));
+    }else if(btnValue === "AC"){
+        output = ""
+    }else if(btnValue === "DEL"){
+        output = output.toString().slice(0, -1);
+    }else{
+        if(output === "" && specialChars.includes(btnValue)) return;
+        output += btnValue;
+    }
+    display.value = output;
 }
 
-switch(operator){
-    case "+" : console.log(add(nr1, nr2));
-    break;
-    case "-" : console.log(substract(nr1, nr2));
-    break;
-    case "*" : console.log(multiply(nr1, nr2));
-    break;
-    case "/" : console.log(divide(nr1, nr2));
-    break;
-    default : console.log("invalid operator");
-}
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => calculate(e.target.dataset.value))
+});
 
 
 

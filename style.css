@@ -39,6 +39,7 @@
 .top-bttns > button{
     padding:10px 50px;
     align-self: center;
+    width: 140px;
 }
 
 .bottom-bttns{
@@ -60,4 +61,8 @@ button:hover{
 }
 .total{
 align-self: flex-end;
+}
+input{
+    pointer-events: none;
+    font-size: 25px;
 }
